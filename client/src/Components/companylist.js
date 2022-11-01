@@ -14,7 +14,6 @@ const Companylist = () => {
         { "Name": "E", "Email": "e@e.com", "Am": "No" }];
 
         setdt(objs);
-        setdtt(objs);
     }, []);
 
     function func(e) {
@@ -38,10 +37,7 @@ const Companylist = () => {
                 }
                 return false;
             });
-            setdt(objs);
-        }
-        else{
-            setdt(dtt);
+            setdtt(objs);
         }
     }
 
@@ -78,15 +74,36 @@ const Companylist = () => {
                     </thead>
                     <tbody>
                         {
-                            dt.map((ele,key) => (
-                                <tr>
-                                    <th scope="row">{key}</th>
-                                    <td>{ele.Name}</td>
-                                    <td>{ele.Email}</td>
-                                    <td>{ele.Am}</td>
-                                    <td>{ele.Am === 'No' && (<button className='btns' value={ele.Name} onClick={(e) => func(e)}>Mark as Paid</button>)}</td>
-                                </tr>
-                            ))
+                            chk ? (
+                                dtt.map((ele,key) => (
+                                    <tr>
+                                        <th scope="row">{key}</th>
+                                        <td>{ele.Name}</td>
+                                        <td>{ele.Email}</td>
+                                        <td>{ele.Am}</td>
+                                        <td>{ele.Am === 'No' && (<button className='btns' value={ele.Name} onClick={(e) => func(e)}>Mark as Paid</button>)}</td>
+                                    </tr>
+                                ))
+                            ) : (
+                                dt.map((ele,key) => (
+                                    <tr>
+                                        <th scope="row">{key}</th>
+                                        <td>{ele.Name}</td>
+                                        <td>{ele.Email}</td>
+                                        <td>{ele.Am}</td>
+                                        <td>{ele.Am === 'No' && (<button className='btns' value={ele.Name} onClick={(e) => func(e)}>Mark as Paid</button>)}</td>
+                                    </tr>
+                                ))
+                            )
+                            // dt.map((ele,key) => (
+                            //     <tr>
+                            //         <th scope="row">{key}</th>
+                            //         <td>{ele.Name}</td>
+                            //         <td>{ele.Email}</td>
+                            //         <td>{ele.Am}</td>
+                            //         <td>{ele.Am === 'No' && (<button className='btns' value={ele.Name} onClick={(e) => func(e)}>Mark as Paid</button>)}</td>
+                            //     </tr>
+                            // ))
                         }
                     </tbody>
                 </table>
